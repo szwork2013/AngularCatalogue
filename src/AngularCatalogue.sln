@@ -8,7 +8,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DB4A1D
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularCatalogue.Web", "AngularCatalogue.Web\AngularCatalogue.Web.csproj", "{1F15A88A-4ABC-4A24-9AC5-D67077DF8A1F}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F15A88A-4ABC-4A24-9AC5-D67077DF8A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F15A88A-4ABC-4A24-9AC5-D67077DF8A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F15A88A-4ABC-4A24-9AC5-D67077DF8A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F15A88A-4ABC-4A24-9AC5-D67077DF8A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
