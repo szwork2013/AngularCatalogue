@@ -13,8 +13,8 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Products_Style]') AND parent_object_id = OBJECT_ID(N'[dbo].[Products]'))
-ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_Products_Style]
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Products_Styles]') AND parent_object_id = OBJECT_ID(N'[dbo].[Products]'))
+ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_Products_Styles]
 GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Products_Brands]') AND parent_object_id = OBJECT_ID(N'[dbo].[Products]'))
 ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_Products_Brands]
@@ -42,8 +42,8 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Sizes
 DROP TABLE [dbo].[Sizes]
 GO
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Style]') AND type in (N'U'))
-DROP TABLE [dbo].[Style]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Styles]') AND type in (N'U'))
+DROP TABLE [dbo].[Styles]
 GO
 
 
@@ -74,7 +74,7 @@ CREATE TABLE Colours
     Caption NVARCHAR(100) NOT NULL
 )
 
-CREATE TABLE Style
+CREATE TABLE Styles
 (
     Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Caption NVARCHAR(100) NOT NULL
@@ -103,7 +103,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Brands] FOREIGN KEY([BrandsId])
+ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Brands] FOREIGN KEY([BrandId])
 REFERENCES [dbo].[Brands] ([Id])
 GO
 ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Brands]
@@ -113,10 +113,10 @@ REFERENCES [dbo].[ProductTypes] ([Id])
 GO
 ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_ProductTypes]
 GO
-ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Style] FOREIGN KEY([StyleId])
-REFERENCES [dbo].[Style] ([Id])
+ALTER TABLE [dbo].[Products]  WITH CHECK ADD  CONSTRAINT [FK_Products_Styles] FOREIGN KEY([StyleId])
+REFERENCES [dbo].[Styles] ([Id])
 GO
-ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Style]
+ALTER TABLE [dbo].[Products] CHECK CONSTRAINT [FK_Products_Styles]
 GO
 
 
@@ -168,3 +168,10 @@ VALUES ('Addidas'), ('American Apparel'), ('Andrew Christian'), ('ASOS'),
   ('Criminal Damage'), ('Fred Perry'), ('G-Star'), ('Hugo Boss'), 
   ('Jack & Jones'), ('Levis'), ('Polo Ralph Lauren'), ('River Island'), 
   ('Speedo'), ('Ted Baker'), ('United Colors of Benetton'), ('Vans')
+  
+INSERT INTO ProductTypes(Caption)
+VALUES ('T-Shirts')
+  
+INSERT INTO Styles(Caption)
+VALUES ('Long sleeve'), ('Regular sleeve'), ('Rolled Sleeve'), ('Capped Sleeve'),
+  ('Slim fit')
