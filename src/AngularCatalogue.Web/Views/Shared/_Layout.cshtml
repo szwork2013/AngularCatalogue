@@ -1,0 +1,16 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html ng-app>
+    <head>
+        <title>Angular Catalogue</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        @Styles.Render("~/Content/base-styles.css")
+        @RenderSection("css", required: false)
+    </head>
+    <body>
+        @RenderBody() 
+
+        @Scripts.Render("~/Scripts/base-frameworks.js")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>
