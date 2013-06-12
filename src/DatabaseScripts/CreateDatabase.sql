@@ -1,3 +1,13 @@
+USE AngularCatalogue
+GO
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[FlattenedProducts]'))
+DROP VIEW [dbo].[FlattenedProducts]
+GO
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[FlattenedProductVariants]'))
+DROP VIEW [dbo].[FlattenedProductVariants]
+GO
+
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ProductVariants_Colours]') AND parent_object_id = OBJECT_ID(N'[dbo].[ProductVariants]'))
 ALTER TABLE [dbo].[ProductVariants] DROP CONSTRAINT [FK_ProductVariants_Colours]
 GO
@@ -81,18 +91,9 @@ CREATE TABLE Styles
 )
 
 
-USE [AngularCatalogue]
-GO
-
-/****** Object:  Table [dbo].[Products]    Script Date: 06/12/2013 00:07:30 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
 CREATE TABLE [dbo].[Products](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Caption] [nvarchar](100) NOT NULL,
 	[BrandId] [int] NOT NULL,
 	[ProductTypeId] [int] NOT NULL,
 	[StyleId] [int] NOT NULL,
@@ -126,6 +127,7 @@ CREATE TABLE [dbo].[ProductVariants](
 	[ProductId] [int] NOT NULL,
 	[ColourId] [int] NOT NULL,
 	[SizeId] [int] NOT NULL,
+	[InventoryCount] [int] NOT NULL
  CONSTRAINT [PK_ProductVariants] PRIMARY KEY CLUSTERED 
 (
 	[ProductId] ASC,
@@ -151,11 +153,30 @@ REFERENCES [dbo].[Sizes] ([Id])
 GO
 ALTER TABLE [dbo].[ProductVariants] CHECK CONSTRAINT [FK_ProductVariants_Sizes]
 GO
-
+CREATE VIEW FlattenedProducts
+AS
+SELECT p.Id, b.Caption AS Brand, p.Caption AS Product, s.Caption AS Style, pt.Caption AS ProductType
+FROM Products p
+INNER JOIN Brands b ON p.BrandId = b.Id
+INNER JOIN ProductTypes pt ON p.ProductTypeId = pt.Id
+INNER JOIN Styles s ON p.StyleId = s.Id;
+GO
+CREATE VIEW FlattenedProductVariants
+AS
+SELECT p.Id AS ProductId, pv.SizeId, pv.ColourId, sz.Caption AS Size, c.Caption AS Colour
+FROM Products p
+INNER JOIN ProductVariants pv ON p.Id = pv.ProductId
+INNER JOIN Sizes sz ON pv.SizeId = sz.Id
+INNER JOIN Colours c ON pv.ColourId = c.Id;
+GO
 
 
 INSERT INTO Sizes(Caption)
-VALUES('XS'),('S'),('M'),('L'),('XL'),('2XL')
+VALUES('XS'),('S'),('M'),('L'),('XL'),('2XL'),
+	('28S'), ('28R'), ('28L'), ('30S'), ('30R'), ('30L'),
+	('32S'), ('32R'), ('32L'), ('34S'), ('34R'), ('34L'),
+	('36S'), ('36R'), ('36L'), ('38S'), ('38R'), ('38L')
+	
 
 INSERT INTO Colours(Caption)
 VALUES('Black'), ('Blue'), ('Beige'), ('Cream'), ('Grey'), ('Navy'), ('Pink'),
@@ -170,8 +191,38 @@ VALUES ('Addidas'), ('American Apparel'), ('Andrew Christian'), ('ASOS'),
   ('Speedo'), ('Ted Baker'), ('United Colors of Benetton'), ('Vans')
   
 INSERT INTO ProductTypes(Caption)
-VALUES ('T-Shirts')
+VALUES ('T-Shirt'), ('Jeans')
   
 INSERT INTO Styles(Caption)
 VALUES ('Long sleeve'), ('Regular sleeve'), ('Rolled Sleeve'), ('Capped Sleeve'),
-  ('Slim fit')
+  ('Slim fit'), ('Regular fit'), ('Boot cut')
+  
+INSERT INTO Products(BrandId, ProductTypeId, StyleId, Caption, ProductImage)
+VALUES
+	(1,1,2,'Sportif', 't-shirt-1.jpg'), -- Addidas, Tshirt, Regular sleeve
+	(2,1,1,'Relaxx', 't-shirt-2.jpg'), -- American Apparel, tshirt, long-sleeve
+	(4,1,3,'Flow', 't-shirt-3.jpg'), -- ASOS, tshirt,rolled-sleeve
+	(4,1,4,'Eksell', 't-shirt-4.jpg'), -- ASOS, tshirt,capped-sleeve
+	(4,2,5,'Jim''s', 'jeans-5.jpg'), -- ASOS, Jeans, slim-fit
+	(4,2,5,'Bob''s', 'jeans-6.jpg'), -- ASOS, Jeans, regular-fit
+	(14,2,6,'501s', 'jeans-7.jpg') -- Levis, Jeans, boot-cut
+	
+INSERT INTO ProductVariants(ProductId, SizeId, ColourId, InventoryCount)
+VALUES
+	(1,1,5,10),(1,2,5,10),(1,3,5,10),(1,4,5,10),(1,5,5,10),
+	(2,2,8,10),(2,3,8,10),(2,4,8,10),(2,5,8,10),(2,6,8,10),
+	(3,1,12,5),(3,2,12,5),(3,3,12,5),(3,4,12,5),(3,5,12,5),(3,6,12,5),
+	(4,1,2,15),(4,2,2,15),(4,3,2,15),(4,4,2,15),(4,5,2,15),(4,6,2,15),
+	(5,7,6,7),(5,8,6,5),(5,9,6,5),(5,10,6,5),(5,11,6,5),(5,12,6,5),
+	(5,13,6,8),(5,14,6,5),(5,15,6,5),(5,16,6,5),(5,17,6,5),(5,18,6,5),
+	(5,19,6,9),(5,20,6,5),(5,21,6,5),(5,22,6,5),(5,23,6,5),(5,24,6,5),
+	(6,7,6,4),(6,8,6,5),(6,9,6,5),(6,10,6,5),(6,11,6,5),(6,12,6,5),
+	(6,13,6,5),(6,14,6,5),(6,15,6,5),(6,16,6,5),(6,17,6,5),(6,18,6,5),
+	(6,19,6,6),(6,20,6,5),(6,21,6,5),(6,22,6,5),(6,23,6,5),(6,24,6,5),
+	(7,7,6,1),(7,8,6,5),(7,9,6,5),(7,10,6,5),(7,11,6,5),(7,12,6,5),
+	(7,13,6,2),(7,14,6,5),(7,15,6,5),(7,16,6,5),(7,17,6,5),(7,18,6,5),
+	(7,19,6,3),(7,20,6,5),(7,21,6,5),(7,22,6,5),(7,23,6,5),(7,24,6,5)
+	
+
+SELECT * FROM FlattenedProducts
+SELECT * FROM FlattenedProductVariants
