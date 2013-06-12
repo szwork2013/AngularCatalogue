@@ -1,6 +1,8 @@
 USE AngularCatalogue
 GO
-
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ColoursUsage]'))
+DROP VIEW [dbo].[ColoursUsage]
+GO
 IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[FlattenedProducts]'))
 DROP VIEW [dbo].[FlattenedProducts]
 GO
@@ -155,7 +157,7 @@ ALTER TABLE [dbo].[ProductVariants] CHECK CONSTRAINT [FK_ProductVariants_Sizes]
 GO
 CREATE VIEW FlattenedProducts
 AS
-SELECT p.Id, b.Caption AS Brand, p.Caption AS Product, s.Caption AS Style, pt.Caption AS ProductType
+SELECT p.Id, b.Caption AS Brand, p.Caption AS ProductName, s.Caption AS Style, pt.Caption AS ProductType, p.ProductImage
 FROM Products p
 INNER JOIN Brands b ON p.BrandId = b.Id
 INNER JOIN ProductTypes pt ON p.ProductTypeId = pt.Id
@@ -163,14 +165,19 @@ INNER JOIN Styles s ON p.StyleId = s.Id;
 GO
 CREATE VIEW FlattenedProductVariants
 AS
-SELECT p.Id AS ProductId, pv.SizeId, pv.ColourId, sz.Caption AS Size, c.Caption AS Colour
+SELECT p.Id AS ProductId, pv.SizeId, pv.ColourId, sz.Caption AS Size, c.Caption AS Colour, pv.InventoryCount
 FROM Products p
 INNER JOIN ProductVariants pv ON p.Id = pv.ProductId
 INNER JOIN Sizes sz ON pv.SizeId = sz.Id
 INNER JOIN Colours c ON pv.ColourId = c.Id;
 GO
-
-
+CREATE VIEW ColoursUsage
+AS
+SELECT c.Id, c.Caption, SUM(pv.InventoryCount) AS InventoryCount
+FROM Colours c
+INNER JOIN ProductVariants pv ON pv.ColourId = c.Id
+GROUP BY c.Id, c.Caption;
+GO
 INSERT INTO Sizes(Caption)
 VALUES('XS'),('S'),('M'),('L'),('XL'),('2XL'),
 	('28S'), ('28R'), ('28L'), ('30S'), ('30R'), ('30L'),
@@ -199,13 +206,13 @@ VALUES ('Long sleeve'), ('Regular sleeve'), ('Rolled Sleeve'), ('Capped Sleeve')
   
 INSERT INTO Products(BrandId, ProductTypeId, StyleId, Caption, ProductImage)
 VALUES
-	(1,1,2,'Sportif', 't-shirt-1.jpg'), -- Addidas, Tshirt, Regular sleeve
-	(2,1,1,'Relaxx', 't-shirt-2.jpg'), -- American Apparel, tshirt, long-sleeve
-	(4,1,3,'Flow', 't-shirt-3.jpg'), -- ASOS, tshirt,rolled-sleeve
-	(4,1,4,'Eksell', 't-shirt-4.jpg'), -- ASOS, tshirt,capped-sleeve
-	(4,2,5,'Jim''s', 'jeans-5.jpg'), -- ASOS, Jeans, slim-fit
-	(4,2,5,'Bob''s', 'jeans-6.jpg'), -- ASOS, Jeans, regular-fit
-	(14,2,6,'501s', 'jeans-7.jpg') -- Levis, Jeans, boot-cut
+	(1,1,2,'Sportif', 'tshirt-1.png'), -- Addidas, Tshirt, Regular sleeve
+	(2,1,1,'Relaxx', 'tshirt-2.png'), -- American Apparel, tshirt, long-sleeve
+	(4,1,3,'Flow', 'tshirt-3.png'), -- ASOS, tshirt,rolled-sleeve
+	(4,1,4,'Eksell', 'tshirt-4.png'), -- ASOS, tshirt,capped-sleeve
+	(4,2,5,'Jim''s', 'jeans-5.png'), -- ASOS, Jeans, slim-fit
+	(4,2,5,'Bob''s', 'jeans-6.png'), -- ASOS, Jeans, regular-fit
+	(14,2,6,'501s', 'jeans-7.png') -- Levis, Jeans, boot-cut
 	
 INSERT INTO ProductVariants(ProductId, SizeId, ColourId, InventoryCount)
 VALUES

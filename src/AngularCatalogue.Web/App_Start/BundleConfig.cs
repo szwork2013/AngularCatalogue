@@ -6,13 +6,16 @@ namespace AngularCatalogue.Web
     {
          public static void RegisterBundles(BundleCollection bundles)
          {
+             bundles.Add(new StyleBundle("~/Content/base-styles.css")
+                 .Include("~/Content/bootstrap.css"));
+
              bundles.Add(new ScriptBundle("~/Scripts/base-frameworks.js")
                  .Include("~/Scripts/jquery-{version}.js")
                  .Include("~/Scripts/angular.js")
                  .Include("~/Scripts/bootstrap.js"));
 
-             bundles.Add(new StyleBundle("~/Content/base-styles.css")
-                 .Include("~/Content/bootstrap.css"));
+             bundles.Add(new ScriptBundle("~/Scripts/angular-catalogue.js")
+                 .Include("~/Scripts/Controllers/ProductSearchController.js"));
          }
     }
 }
