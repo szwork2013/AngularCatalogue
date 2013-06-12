@@ -15,7 +15,10 @@ namespace AngularCatalogue.Web
                  .Include("~/Scripts/bootstrap.js"));
 
              bundles.Add(new ScriptBundle("~/Scripts/angular-catalogue.js")
-                 .Include("~/Scripts/Controllers/ProductSearchController.js"));
+                .Include("~/Scripts/app/app.js") // Configures the angular application
+                .Include("~/Scripts/app/Services/colourService.js")
+                .Include("~/Scripts/app/Services/productService.js")
+                .Include("~/Scripts/app/Controllers/productSearchController.js"));
          }
     }
 }

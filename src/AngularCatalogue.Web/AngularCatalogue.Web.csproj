@@ -119,7 +119,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Controllers\api\ProductController.cs" />
+    <Compile Include="Controllers\api\ColoursController.cs" />
+    <Compile Include="Controllers\api\ProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccess\Colour.cs" />
     <Compile Include="DataAccess\Product.cs" />
@@ -164,9 +165,11 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\Services\productService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\Controllers\ProductSearchController.js" />
+    <Content Include="Scripts\app\Controllers\productSearchController.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
     <Content Include="Scripts\i18n\angular-locale_af.js" />
@@ -457,6 +460,7 @@
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\app\Services\colourService.js" />
     <Content Include="Scripts\ui-bootstrap-0.3.0.js" />
     <Content Include="Scripts\ui-bootstrap-0.3.0.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.3.0.js" />

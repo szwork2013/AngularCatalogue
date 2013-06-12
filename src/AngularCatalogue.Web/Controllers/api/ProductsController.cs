@@ -8,7 +8,7 @@ using AngularCatalogue.Web.DataAccess;
 
 namespace AngularCatalogue.Web.Controllers.api
 {
-    public class ProductController : ApiController
+    public class ProductsController : ApiController
     {
         private Repository _repository = new Repository();
 
