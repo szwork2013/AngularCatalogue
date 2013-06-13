@@ -210,7 +210,7 @@ GO
 CREATE VIEW SizeUsage
 AS
 SELECT s.Id, s.Caption, SUM(pv.InventoryCount) AS InventoryCount
-FROM Size s
+FROM Sizes s
 INNER JOIN ProductVariants pv ON pv.SizeId = s.Id
 GROUP BY s.Id, s.Caption;
 GO
@@ -292,3 +292,4 @@ SELECT * FROM FlattenedProductVariants
 SELECT * FROM ColourUsage
 SELECT * FROM BrandUsage
 SELECT * FROM ProductTypeUsage
+SELECT * FROM SizeUsage
