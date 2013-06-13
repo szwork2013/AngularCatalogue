@@ -208,7 +208,8 @@ INSERT INTO Sizes(Caption)
 VALUES('XS'),('S'),('M'),('L'),('XL'),('2XL'),
 	('28S'), ('28R'), ('28L'), ('30S'), ('30R'), ('30L'),
 	('32S'), ('32R'), ('32L'), ('34S'), ('34R'), ('34L'),
-	('36S'), ('36R'), ('36L'), ('38S'), ('38R'), ('38L')
+	('36S'), ('36R'), ('36L'), ('38S'), ('38R'), ('38L'),
+	('40'), ('42'), ('44'), ('46')
 	
 
 INSERT INTO Colours(Caption)
@@ -224,11 +225,11 @@ VALUES ('Addidas'), ('American Apparel'), ('Andrew Christian'), ('ASOS'),
   ('Speedo'), ('Ted Baker'), ('United Colors of Benetton'), ('Vans')
   
 INSERT INTO ProductTypes(Caption)
-VALUES ('T-Shirt'), ('Jeans'), ('Polo-Shirt')
+VALUES ('T-Shirt'), ('Jeans'), ('Polo-Shirt'), ('Jacket')
   
 INSERT INTO Styles(Caption)
 VALUES ('Long sleeve'), ('Regular sleeve'), ('Rolled Sleeve'), ('Capped Sleeve'),
-  ('Slim fit'), ('Regular fit'), ('Boot cut')
+  ('Slim fit'), ('Regular fit'), ('Boot cut'), ('Denim')
   
 INSERT INTO Products(BrandId, ProductTypeId, StyleId, Caption, ProductImage)
 VALUES
@@ -245,7 +246,8 @@ VALUES
 	(13,3,5,'Mars', 'polo-shirt-11.png'),
 	(13,3,5,'Saturn', 'polo-shirt-12.png'),
 	(13,3,5,'Jupiter', 'polo-shirt-13.png'),
-	(13,3,5,'Neptune', 'polo-shirt-14.png')
+	(13,3,5,'Neptune', 'polo-shirt-14.png'),
+	(16,4,8,'Discovery', 'denim-jacket-15.png')
 	
 	
 INSERT INTO ProductVariants(ProductId, SizeId, ColourId, InventoryCount)
@@ -270,7 +272,8 @@ VALUES
 	(11,1,10,1),(11,2,10,1),(11,3,10,1),(11,4,10,1),(11,5,10,1),(11,6,10,1),
 	(12,1,10,1),(12,2,10,1),(12,3,10,1),(12,4,10,1),(12,5,10,1),(12,6,10,1),
 	(13,1,14,1),(13,2,14,1),(13,3,14,1),(13,4,14,1),(13,5,14,1),(13,6,14,1),
-	(14,1,8,1),(14,2,8,1),(14,3,8,1),(14,4,8,1),(14,5,8,1),(14,6,8,1)
+	(14,1,8,1),(14,2,8,1),(14,3,8,1),(14,4,8,1),(14,5,8,1),(14,6,8,1),
+	(15,25,2,4),(15,26,2,7),(15,27,2,9),(15,28,2,2)
 
 
 SELECT * FROM FlattenedProducts
