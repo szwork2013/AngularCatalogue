@@ -1,5 +1,8 @@
 USE AngularCatalogue
 GO
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[SizeUsage]'))
+DROP VIEW [dbo].[SizeUsage]
+GO
 IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ProductTypeUsage]'))
 DROP VIEW [dbo].[ProductTypeUsage]
 GO
@@ -202,6 +205,14 @@ FROM ProductTypes pt
 INNER JOIN Products p ON p.ProductTypeId = pt.Id
 INNER JOIN ProductVariants pv ON pv.ProductId = p.Id
 GROUP BY pt.Id, pt.Caption;
+GO
+
+CREATE VIEW SizeUsage
+AS
+SELECT s.Id, s.Caption, SUM(pv.InventoryCount) AS InventoryCount
+FROM Size s
+INNER JOIN ProductVariants pv ON pv.SizeId = s.Id
+GROUP BY s.Id, s.Caption;
 GO
 
 INSERT INTO Sizes(Caption)

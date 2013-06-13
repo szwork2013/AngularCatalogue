@@ -13,6 +13,7 @@
                     <li class="nav-header">Type</li>
                     <li ng-repeat="productType in productTypes"><input type="checkbox" value="{{productType.Id}}"  />{{productType.Caption}}</li>
                     <li class="nav-header">Size</li>
+                    <li ng-repeat="size in sizes"><input type="checkbox" value="{{size.Id}}"  />{{size.Caption}}</li>
                 </ul>
             </div>
             <!--/.well -->

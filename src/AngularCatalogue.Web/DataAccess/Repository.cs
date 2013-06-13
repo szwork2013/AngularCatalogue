@@ -65,5 +65,13 @@ namespace AngularCatalogue.Web.DataAccess
             }
         }
 
+        public IEnumerable<Size> GetSizes()
+        {
+            using (var conn = GetConnection())
+            {
+                return conn.Query<Size>("SELECT * FROM SizeUsage");
+            }            
+        }
+
     }
 }

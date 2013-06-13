@@ -123,6 +123,7 @@
     <Compile Include="Controllers\api\ColoursController.cs" />
     <Compile Include="Controllers\api\ProductsController.cs" />
     <Compile Include="Controllers\api\ProductTypesController.cs" />
+    <Compile Include="Controllers\api\SizesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccess\Brand.cs" />
     <Compile Include="DataAccess\Colour.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="DataAccess\ProductType.cs" />
     <Compile Include="DataAccess\ProductVariant.cs" />
     <Compile Include="DataAccess\Repository.cs" />
+    <Compile Include="DataAccess\Size.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -161,6 +163,7 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Global.asax" />
+    <Content Include="ngapp\Services\sizeService.js" />
     <Content Include="Scripts\angular-bootstrap-prettify.js" />
     <Content Include="Scripts\angular-bootstrap-prettify.min.js" />
     <Content Include="Scripts\angular-bootstrap.js" />
@@ -177,13 +180,13 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\Services\brandService.js" />
-    <Content Include="Scripts\app\Services\productService.js" />
-    <Content Include="Scripts\app\Services\productTypeService.js" />
+    <Content Include="ngapp\app.js" />
+    <Content Include="ngapp\Services\brandService.js" />
+    <Content Include="ngapp\Services\productService.js" />
+    <Content Include="ngapp\Services\productTypeService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\app\Controllers\productSearchController.js" />
+    <Content Include="ngapp\Controllers\productSearchController.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
     <Content Include="Scripts\i18n\angular-locale_af.js" />
@@ -474,7 +477,7 @@
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="Scripts\app\Services\colourService.js" />
+    <Content Include="ngapp\Services\colourService.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
     <Content Include="Scripts\ui-bootstrap-0.3.0.js" />
