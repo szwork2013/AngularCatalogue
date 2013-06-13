@@ -1,3 +1,3 @@
 ﻿"use strict";
 
-var angularCatalogueApp = angular.module('angularCatalogue', []);
+var angularCatalogueApp = angular.module('angularCatalogue', ["ngResource"]);

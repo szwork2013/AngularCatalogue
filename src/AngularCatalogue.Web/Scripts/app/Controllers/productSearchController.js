@@ -1,7 +1,8 @@
 "use strict";
 angularCatalogueApp.controller("ProductSearchController",
-    ['$scope', 'colourService', 'productService',
-        function($scope, colourService, productService) {
-            $scope.colours = colourService.allColours;
-            $scope.products = productService.allProducts;
-        }]);
+    ['$scope', 'colourService', 'productService', 'brandService',
+        function ($scope, colourService, productService, brandService) {
+            $scope.colours = colourService.query();
+            $scope.brands = brandService.query();
+            $scope.products = productService.query();
+        } ]);

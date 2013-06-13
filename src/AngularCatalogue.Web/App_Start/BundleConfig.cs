@@ -12,11 +12,13 @@ namespace AngularCatalogue.Web
              bundles.Add(new ScriptBundle("~/Scripts/base-frameworks.js")
                  .Include("~/Scripts/jquery-{version}.js")
                  .Include("~/Scripts/angular.js")
+                 .Include("~/Scripts/angular-resource.js")
                  .Include("~/Scripts/bootstrap.js"));
 
              bundles.Add(new ScriptBundle("~/Scripts/angular-catalogue.js")
                 .Include("~/Scripts/app/app.js") // Configures the angular application
                 .Include("~/Scripts/app/Services/colourService.js")
+                .Include("~/Scripts/app/Services/brandService.js")
                 .Include("~/Scripts/app/Services/productService.js")
                 .Include("~/Scripts/app/Controllers/productSearchController.js"));
          }

@@ -119,9 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\api\BrandsController.cs" />
     <Compile Include="Controllers\api\ColoursController.cs" />
     <Compile Include="Controllers\api\ProductsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataAccess\Brand.cs" />
     <Compile Include="DataAccess\Colour.cs" />
     <Compile Include="DataAccess\Product.cs" />
     <Compile Include="DataAccess\ProductVariant.cs" />
@@ -173,6 +175,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\Services\brandService.js" />
     <Content Include="Scripts\app\Services\productService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
