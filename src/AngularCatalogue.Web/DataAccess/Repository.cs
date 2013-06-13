@@ -61,7 +61,7 @@ namespace AngularCatalogue.Web.DataAccess
         {
             using (var conn = GetConnection())
             {
-                return conn.Query<ProductType>("SELECT * FROM BrandUsage ORDER BY Caption");
+                return conn.Query<ProductType>("SELECT * FROM ProductTypeUsage ORDER BY Caption");
             }
         }
 
