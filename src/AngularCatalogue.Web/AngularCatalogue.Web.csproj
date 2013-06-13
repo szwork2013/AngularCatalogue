@@ -122,10 +122,12 @@
     <Compile Include="Controllers\api\BrandsController.cs" />
     <Compile Include="Controllers\api\ColoursController.cs" />
     <Compile Include="Controllers\api\ProductsController.cs" />
+    <Compile Include="Controllers\api\ProductTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccess\Brand.cs" />
     <Compile Include="DataAccess\Colour.cs" />
     <Compile Include="DataAccess\Product.cs" />
+    <Compile Include="DataAccess\ProductType.cs" />
     <Compile Include="DataAccess\ProductVariant.cs" />
     <Compile Include="DataAccess\Repository.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,6 +179,7 @@
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\Services\brandService.js" />
     <Content Include="Scripts\app\Services\productService.js" />
+    <Content Include="Scripts\app\Services\productTypeService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\app\Controllers\productSearchController.js" />

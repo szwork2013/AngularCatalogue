@@ -1,5 +1,11 @@
 USE AngularCatalogue
 GO
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ProductTypeUsage]'))
+DROP VIEW [dbo].[ProductTypeUsage]
+GO
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[BrandUsage]'))
+DROP VIEW [dbo].[BrandUsage]
+GO
 IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[ColourUsage]'))
 DROP VIEW [dbo].[ColourUsage]
 GO
@@ -171,6 +177,7 @@ INNER JOIN ProductVariants pv ON p.Id = pv.ProductId
 INNER JOIN Sizes sz ON pv.SizeId = sz.Id
 INNER JOIN Colours c ON pv.ColourId = c.Id;
 GO
+
 CREATE VIEW ColourUsage
 AS
 SELECT c.Id, c.Caption, SUM(pv.InventoryCount) AS InventoryCount
@@ -178,6 +185,25 @@ FROM Colours c
 INNER JOIN ProductVariants pv ON pv.ColourId = c.Id
 GROUP BY c.Id, c.Caption;
 GO
+
+CREATE VIEW BrandUsage
+AS
+SELECT b.Id, b.Caption, SUM(pv.InventoryCount) AS InventoryCount
+FROM Brands b
+INNER JOIN Products p ON p.BrandId = b.Id
+INNER JOIN ProductVariants pv ON pv.ProductId = p.Id
+GROUP BY b.Id, b.Caption;
+GO
+
+CREATE VIEW ProductTypeUsage
+AS
+SELECT pt.Id, pt.Caption, SUM(pv.InventoryCount) AS InventoryCount
+FROM ProductTypes pt
+INNER JOIN Products p ON p.ProductTypeId = pt.Id
+INNER JOIN ProductVariants pv ON pv.ProductId = p.Id
+GROUP BY pt.Id, pt.Caption;
+GO
+
 INSERT INTO Sizes(Caption)
 VALUES('XS'),('S'),('M'),('L'),('XL'),('2XL'),
 	('28S'), ('28R'), ('28L'), ('30S'), ('30R'), ('30L'),
@@ -249,3 +275,6 @@ VALUES
 
 SELECT * FROM FlattenedProducts
 SELECT * FROM FlattenedProductVariants
+SELECT * FROM ColourUsage
+SELECT * FROM BrandUsage
+SELECT * FROM ProductTypeUsage

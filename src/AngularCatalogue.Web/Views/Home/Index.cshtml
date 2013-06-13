@@ -11,6 +11,7 @@
                     <li class="nav-header">Brand</li>
                     <li ng-repeat="brand in brands"><input type="checkbox" value="{{brand.Id}}"  />{{brand.Caption}}</li>
                     <li class="nav-header">Type</li>
+                    <li ng-repeat="productType in productTypes"><input type="checkbox" value="{{productType.Id}}"  />{{productType.Caption}}</li>
                     <li class="nav-header">Size</li>
                 </ul>
             </div>
@@ -31,7 +32,7 @@
                 <div class="span4" ng-repeat="product in products">
                     <h2>{{product.ProductName}}</h2>
                     <p><strong>{{product.Brand}} {{product.ProductType}}</strong> {{Style}}</p>
-                    <p><img ng-src="/Content/clothing-images/{{product.ProductImage}}" alt="{{product.Brand}} {{product.ProductName}} ({{product.Style}} {{product.ProductType}})" />
+                    <p><img style="width:200px" ng-src="/Content/clothing-images/{{product.ProductImage}}" alt="{{product.Brand}} {{product.ProductName}} ({{product.Style}} {{product.ProductType}})" />
                     </p>
                     <p>
                         <a class="btn" href="#">View details &raquo;</a></p>

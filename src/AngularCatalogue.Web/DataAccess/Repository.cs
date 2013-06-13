@@ -56,5 +56,14 @@ namespace AngularCatalogue.Web.DataAccess
                 return conn.Query<Brand>("SELECT * FROM BrandUsage ORDER BY Caption");
             }
         }
+
+        public IEnumerable<ProductType> GetProductTypes()
+        {
+            using (var conn = GetConnection())
+            {
+                return conn.Query<ProductType>("SELECT * FROM BrandUsage ORDER BY Caption");
+            }
+        }
+
     }
 }
