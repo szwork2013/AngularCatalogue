@@ -7,7 +7,10 @@
             <div class="well sidebar-nav">
                 <ul class="nav nav-list">
                     <li class="nav-header">Colours</li>
-                    <li ng-repeat="colour in colours"><input type="checkbox" value="{{colour.Id}}"  />{{colour.Caption}}</li>
+                    <li ng-repeat="colour in colours" class="">
+                        <input id="colour-{{colour.Id}}" type="checkbox" ng-change="changeColour()" ng-model="colour.isChecked" ng-true-value="{{colour.Id}}" ng-false-value="" value="{{colour.isChecked}}"/>
+                        <label for="colour-{{colour.Id}}">{{colour.Caption}}</label>
+                    </li>
                     <li class="nav-header">Brand</li>
                     <li ng-repeat="brand in brands"><input type="checkbox" value="{{brand.Id}}"  />{{brand.Caption}}</li>
                     <li class="nav-header">Type</li>

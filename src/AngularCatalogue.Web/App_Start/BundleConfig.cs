@@ -7,7 +7,8 @@ namespace AngularCatalogue.Web
          public static void RegisterBundles(BundleCollection bundles)
          {
              bundles.Add(new StyleBundle("~/Content/base-styles.css")
-                 .Include("~/Content/bootstrap.css"));
+                 .Include("~/Content/bootstrap.css")
+                 .Include("~/Content/angularCatalogue.css"));
 
              bundles.Add(new ScriptBundle("~/Scripts/base-frameworks.js")
                  .Include("~/Scripts/jquery-{version}.js")

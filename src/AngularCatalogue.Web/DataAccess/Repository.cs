@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using Dapper;
 
 namespace AngularCatalogue.Web.DataAccess
@@ -15,11 +17,20 @@ namespace AngularCatalogue.Web.DataAccess
             result.Open();
             return result;
         }
-         public IEnumerable<Product> GetProducts()
+
+         public IEnumerable<Product> GetProducts(IEnumerable<int> colourIds)
          {
              using (var conn = GetConnection())
              {
-                 return conn.Query<Product>("SELECT * FROM FlattenedProducts");
+                 StringBuilder sb = new StringBuilder();
+                 sb.Append("SELECT DISTINCT fp.* FROM FlattenedProducts fp INNER JOIN ProductVariants pv ON fp.Id = pv.ProductId ");
+                 if (colourIds.Any())
+                 {
+                     sb.Append("WHERE pv.colourId IN @colourId ");
+                 }
+                 string sql = sb.ToString();
+                 Trace.WriteLine(sql);
+                 return conn.Query<Product>(sql, new{colourId = colourIds});
              }
          }
 
