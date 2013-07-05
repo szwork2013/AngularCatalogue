@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Dapper;
+using AngularCatalogue.Web.DataAccess.SqlBuilder;
 
 namespace AngularCatalogue.Web.DataAccess
 {
@@ -18,19 +19,30 @@ namespace AngularCatalogue.Web.DataAccess
             return result;
         }
 
-         public IEnumerable<Product> GetProducts(IEnumerable<int> colourIds)
+         public IEnumerable<Product> GetProducts(IEnumerable<int> colourIds, IEnumerable<int> brandIds)
          {
              using (var conn = GetConnection())
              {
+                 FilterCombiner filter = new FilterCombiner();
                  StringBuilder sb = new StringBuilder();
-                 sb.Append("SELECT DISTINCT fp.* FROM FlattenedProducts fp INNER JOIN ProductVariants pv ON fp.Id = pv.ProductId ");
+                 
+                 sb.AppendLine("SELECT DISTINCT fp.*");
+                 sb.AppendLine("FROM FlattenedProducts fp ");
+                 sb.AppendLine("INNER JOIN ProductVariants pv ON fp.Id = pv.ProductId");
+                 sb.AppendLine("INNER JOIN Products p ON p.Id = fp.Id");
                  if (colourIds.Any())
                  {
-                     sb.Append("WHERE pv.colourId IN @colourId ");
+                     sb.Append(filter.Clause);
+                     sb.AppendLine("pv.colourId IN @colourId");
+                 }
+                 if (brandIds.Any())
+                 {
+                     sb.Append(filter.Clause);
+                     sb.AppendLine("p.brandId IN @brandId");
                  }
                  string sql = sb.ToString();
                  Trace.WriteLine(sql);
-                 return conn.Query<Product>(sql, new{colourId = colourIds});
+                 return conn.Query<Product>(sql, new{colourId = colourIds, brandId = brandIds});
              }
          }
 

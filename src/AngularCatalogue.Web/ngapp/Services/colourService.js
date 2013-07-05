@@ -36,17 +36,4 @@ angularCatalogueApp.factory("colourService", ["$http",
         }
 
         return colourServiceFactory;
-
-        //        var service = $resource("/api/Colours", {}, { query: { method: "GET", params: {}, isArray: true} });
-        //        console.log(service);
-        //        angular.extend(service.prototype, {
-        //            query: function (values) {
-        //                console.log("In custom query");
-        //                var result = this.$query();
-        //                console.log(result);
-        //                return result;
-        //            }
-        //        });
-        //        console.log(service);
-        //        return service;
     } ]);

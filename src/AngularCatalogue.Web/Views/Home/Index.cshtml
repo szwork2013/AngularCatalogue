@@ -8,11 +8,14 @@
                 <ul class="nav nav-list">
                     <li class="nav-header">Colours</li>
                     <li ng-repeat="colour in colours" class="">
-                        <input id="colour-{{colour.Id}}" type="checkbox" ng-change="changeColour()" ng-model="colour.isChecked" ng-true-value="{{colour.Id}}" ng-false-value="" value="{{colour.isChecked}}"/>
+                        <input id="colour-{{colour.Id}}" type="checkbox" ng-change="changeUserFilter()" ng-model="colour.isChecked" ng-true-value="{{colour.Id}}" ng-false-value="" value="{{colour.isChecked}}"/>
                         <label for="colour-{{colour.Id}}">{{colour.Caption}}</label>
                     </li>
                     <li class="nav-header">Brand</li>
-                    <li ng-repeat="brand in brands"><input type="checkbox" value="{{brand.Id}}"  />{{brand.Caption}}</li>
+                    <li ng-repeat="brand in brands" class="">
+                        <input id="brand-{{brand.Id}}" type="checkbox" ng-change="changeUserFilter()" ng-model="brand.isChecked" ng-true-value="{{brand.Id}}" ng-false-value="" value="{{brand.isChecked}}"/>
+                        <label for="brand-{{brand.Id}}">{{brand.Caption}}</label>
+                    </li>
                     <li class="nav-header">Type</li>
                     <li ng-repeat="productType in productTypes"><input type="checkbox" value="{{productType.Id}}"  />{{productType.Caption}}</li>
                     <li class="nav-header">Size</li>
