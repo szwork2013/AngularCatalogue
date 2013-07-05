@@ -23,7 +23,9 @@ namespace AngularCatalogue.Web
                 .Include("~/ngapp/Services/productTypeService.js")
                 .Include("~/ngapp/Services/productService.js")
                 .Include("~/ngapp/Services/sizeService.js")
+                .Include("~/ngapp/Directives/userFilter.js")
                 .Include("~/ngapp/Controllers/productSearchController.js"));
+                
          }
     }
 }

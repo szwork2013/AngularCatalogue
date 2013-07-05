@@ -4,7 +4,7 @@ angularCatalogueApp.controller("ProductSearchController",
         function ($scope, $filter, colourService, productService, brandService, productTypeService, sizeService) {
             $scope.colours = colourService().$query();
             $scope.brands = brandService().$query();
-            $scope.productTypes = productTypeService.query();
+            $scope.productTypes = productTypeService().$query();
             $scope.products = productService.query();
             $scope.sizes = sizeService.query();
 
