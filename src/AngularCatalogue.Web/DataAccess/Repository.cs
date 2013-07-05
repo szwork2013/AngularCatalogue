@@ -19,7 +19,7 @@ namespace AngularCatalogue.Web.DataAccess
             return result;
         }
 
-         public IEnumerable<Product> GetProducts(IEnumerable<int> colourIds, IEnumerable<int> brandIds)
+         public IEnumerable<Product> GetProducts(IEnumerable<int> colourIds, IEnumerable<int> brandIds, IEnumerable<int> productTypeIds, IEnumerable<int> sizeIds)
          {
              using (var conn = GetConnection())
              {
@@ -40,9 +40,19 @@ namespace AngularCatalogue.Web.DataAccess
                      sb.Append(filter.Clause);
                      sb.AppendLine("p.brandId IN @brandId");
                  }
+                 if (productTypeIds.Any())
+                 {
+                     sb.Append(filter.Clause);
+                     sb.AppendLine("p.productTypeId IN @productTypeId");
+                 }
+                 if (sizeIds.Any())
+                 {
+                     sb.Append(filter.Clause);
+                     sb.AppendLine("pv.sizeId IN @sizeId");
+                 }
                  string sql = sb.ToString();
                  Trace.WriteLine(sql);
-                 return conn.Query<Product>(sql, new{colourId = colourIds, brandId = brandIds});
+                 return conn.Query<Product>(sql, new{colourId = colourIds, brandId = brandIds, productTypeId = productTypeIds, sizeId = sizeIds});
              }
          }
 

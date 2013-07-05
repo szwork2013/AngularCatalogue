@@ -5,8 +5,8 @@ angularCatalogueApp.controller("ProductSearchController",
             $scope.colours = colourService().$query();
             $scope.brands = brandService().$query();
             $scope.productTypes = productTypeService().$query();
+            $scope.sizes = sizeService().$query();
             $scope.products = productService.query();
-            $scope.sizes = sizeService.query();
 
             $scope.changeUserFilter = function () {
                 applyUserFilter();
@@ -16,15 +16,18 @@ angularCatalogueApp.controller("ProductSearchController",
 
             function applyUserFilter() {
                 var activeColours = $filter('filter')($scope.colours, { isChecked: true });
-                console.log(activeColours);
                 var colourIds = getIdsFromFilter(activeColours);
-                console.log(colourIds);
 
                 var activeBrands = $filter('filter')($scope.brands, { isChecked: true });
-                console.log(activeBrands);
                 var brandIds = getIdsFromFilter(activeBrands);
-                console.log(brandIds);
-                $scope.products = productService.query({ colours: [colourIds], brands: [brandIds] });
+
+                var activeProductTypes = $filter('filter')($scope.productTypes, { isChecked: true });
+                var productTypeIds = getIdsFromFilter(activeProductTypes);
+
+                var activeSizes = $filter('filter')($scope.sizes, { isChecked: true });
+                var sizeIds = getIdsFromFilter(activeSizes);
+
+                $scope.products = productService.query({ colours: [colourIds], brands: [brandIds], productTypes: [productTypeIds], sizes: [sizeIds] });
             }
 
             function getIdsFromFilter(filterResult) {

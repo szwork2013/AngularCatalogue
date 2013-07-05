@@ -12,11 +12,13 @@ namespace AngularCatalogue.Web.Controllers.api
     {
         private Repository _repository = new Repository();
 
-        public IEnumerable<Product> Get(string colours, string brands)
+        public IEnumerable<Product> Get(string colours, string brands, string productTypes, string sizes)
         {
             var colourIds = parseIds(colours);
             var brandIds = parseIds(brands);
-            return _repository.GetProducts(colourIds, brandIds);
+            var productTypeIds = parseIds(productTypes);
+            var sizeIds = parseIds(sizes);
+            return _repository.GetProducts(colourIds, brandIds, productTypeIds, sizeIds);
         }
 
         private IEnumerable<int> parseIds(string idString)
