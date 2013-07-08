@@ -128,7 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Controllers\api\BrandsController.cs" />
     <Compile Include="Controllers\api\ColoursController.cs" />
-    <Compile Include="Controllers\api\ProductsController.cs" />
+    <Compile Include="Controllers\api\ProductController.cs" />
     <Compile Include="Controllers\api\ProductTypesController.cs" />
     <Compile Include="Controllers\api\SizesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -149,6 +149,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\angular-ui.css" />
+    <Content Include="Content\angular-ui.min.css" />
     <Content Include="Content\angularCatalogue.css" />
     <Content Include="Content\bootstrap-responsive.css" />
     <Content Include="Content\bootstrap-responsive.min.css" />
@@ -171,10 +173,17 @@
     <Content Include="Content\clothing-images\tshirt-4.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\select2.css" />
+    <Content Include="Content\select2.png" />
+    <Content Include="Content\select2x2.png" />
+    <Content Include="Content\spinner.gif" />
     <Content Include="Global.asax" />
+    <Content Include="ngapp\controllers\productDetailController.js" />
     <Content Include="ngapp\directives\templates\user-filter-template.html" />
     <Content Include="ngapp\directives\userFilter.js" />
-    <Content Include="ngapp\Services\sizeService.js" />
+    <Content Include="ngapp\services\sizeService.js" />
+    <Content Include="ngapp\templates\product.html" />
+    <Content Include="ngapp\templates\search.html" />
     <Content Include="Scripts\angular-bootstrap-prettify.js" />
     <Content Include="Scripts\angular-bootstrap-prettify.min.js" />
     <Content Include="Scripts\angular-bootstrap.js" />
@@ -189,15 +198,19 @@
     <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular-sanitize.min.js" />
     <Content Include="Scripts\angular-scenario.js" />
+    <Content Include="Scripts\angular-ui-ieshiv.js" />
+    <Content Include="Scripts\angular-ui-ieshiv.min.js" />
+    <Content Include="Scripts\angular-ui.js" />
+    <Content Include="Scripts\angular-ui.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="ngapp\app.js" />
-    <Content Include="ngapp\Services\brandService.js" />
-    <Content Include="ngapp\Services\productService.js" />
-    <Content Include="ngapp\Services\productTypeService.js" />
+    <Content Include="ngapp\services\brandService.js" />
+    <Content Include="ngapp\services\productService.js" />
+    <Content Include="ngapp\services\productTypeService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ngapp\Controllers\productSearchController.js" />
+    <Content Include="ngapp\controllers\productSearchController.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />
     <Content Include="Scripts\i18n\angular-locale_af.js" />
@@ -488,9 +501,11 @@
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="ngapp\Services\colourService.js" />
+    <Content Include="ngapp\services\colourService.js" />
     <Content Include="Scripts\json2.js" />
     <Content Include="Scripts\json2.min.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\ui-bootstrap-0.3.0.js" />
     <Content Include="Scripts\ui-bootstrap-0.4.0.js" />
     <Content Include="Scripts\ui-bootstrap-0.4.0.min.js" />
@@ -509,6 +524,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="ngapp\filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

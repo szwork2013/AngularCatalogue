@@ -8,9 +8,15 @@ using AngularCatalogue.Web.DataAccess;
 
 namespace AngularCatalogue.Web.Controllers.api
 {
-    public class ProductsController : ApiController
+    public class ProductController : ApiController
     {
         private Repository _repository = new Repository();
+
+        //public Product Get(string id)
+        //{
+        //    int productId = int.Parse(id);
+        //    return _repository.GetProduct(productId);
+        //}
 
         public IEnumerable<Product> Get(string colours, string brands, string productTypes, string sizes)
         {

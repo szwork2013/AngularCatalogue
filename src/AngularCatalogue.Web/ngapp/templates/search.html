@@ -1,0 +1,38 @@
+﻿<div class="row-fluid">
+    <div class="span3">
+        <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+                <li class="nav-header">Colours</li>
+                <li ng-repeat="colour in colours">
+                    <span user-filter filter-item="colour" change-filter="changeUserFilter()" />
+                </li>
+                <li class="nav-header">Brand</li>
+                <li ng-repeat="brand in brands">
+                    <span user-filter filter-item="brand" change-filter="changeUserFilter()" />
+                </li>
+                <li class="nav-header">Type</li>
+                <li ng-repeat="productType in productTypes">
+                    <span user-filter filter-item="productType" change-filter="changeUserFilter()" />
+                </li>
+                <li class="nav-header">Size</li>
+                <li ng-repeat="size in sizes">
+                    <span user-filter filter-item="size" change-filter="changeUserFilter()" />
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="hero-unid">
+        <div class="row-fluid">
+            <div class="span4" ng-repeat="product in products">
+                <h2>{{product.ProductName}}</h2>
+                <p><strong>{{product.Brand}} {{product.ProductType}}</strong> {{Style}}</p>
+                <p><img style="width:200px" ng-src="/Content/clothing-images/{{product.ProductImage}}" alt="{{product.Brand}} {{product.ProductName}} ({{product.Style}} {{product.ProductType}})" />
+                </p>
+                <p>
+                    <a class="btn" href="#/product/{{product.Id}}">View details &raquo;</a></p>
+            </div>
+        </div>
+        <!--/row-->
+    </div>
+    <!--/span-->
+</div>
