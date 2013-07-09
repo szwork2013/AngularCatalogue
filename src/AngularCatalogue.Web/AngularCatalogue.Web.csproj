@@ -184,6 +184,7 @@
     <Content Include="ngapp\controllers\productDetailController.js" />
     <Content Include="ngapp\directives\templates\user-filter-template.html" />
     <Content Include="ngapp\directives\userFilter.js" />
+    <Content Include="ngapp\filters\idFilter.js" />
     <Content Include="ngapp\services\sizeService.js" />
     <Content Include="ngapp\templates\editProduct.html" />
     <Content Include="ngapp\templates\product.html" />
@@ -528,7 +529,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="ngapp\filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

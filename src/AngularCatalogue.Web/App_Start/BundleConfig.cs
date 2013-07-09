@@ -22,6 +22,9 @@ namespace AngularCatalogue.Web
              // Configure the Angular Application
                 .Include("~/ngapp/app.js")
 
+             // Filters
+                .Include("~/ngapp/filters/idFilter.js")
+
              // The services
                 .Include("~/ngapp/Services/colourService.js")
                 .Include("~/ngapp/Services/brandService.js")
