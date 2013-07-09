@@ -114,7 +114,13 @@ namespace AngularCatalogue.Web.DataAccess
             }
         }
 
-
+        public IEnumerable<Style> GetAllStyles()
+        {
+            using (var conn = GetConnection())
+            {
+                return conn.Query<Style>("SELECT * FROM Styles ORDER BY Caption");
+            }
+        }
         
         public IEnumerable<Size> GetSizes()
         {

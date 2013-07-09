@@ -131,6 +131,7 @@
     <Compile Include="Controllers\api\ProductController.cs" />
     <Compile Include="Controllers\api\ProductTypesController.cs" />
     <Compile Include="Controllers\api\SizesController.cs" />
+    <Compile Include="Controllers\api\StylesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataAccess\Brand.cs" />
     <Compile Include="DataAccess\Colour.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="DataAccess\Repository.cs" />
     <Compile Include="DataAccess\Size.cs" />
     <Compile Include="DataAccess\SqlBuilder\FilterCombiner.cs" />
+    <Compile Include="DataAccess\Style.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
