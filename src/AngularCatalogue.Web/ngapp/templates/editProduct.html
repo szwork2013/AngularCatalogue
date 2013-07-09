@@ -9,6 +9,10 @@
             <select ng-options="brand as brand.Caption for brand in brands" ng-model="selectedBrand" ng-change="changeBrand()"></select>
             </select> {{product.BrandId}} / {{product.Brand}}
         </div>
+        <div class="well">
+            <span class="label">Product Type</span>
+            <select ng-options="productType as productType.Caption for productType in productTypes" ng-model="selectedProductType" ng-change="changeProductType()"></select>
+        </div>
 
     </form>
 

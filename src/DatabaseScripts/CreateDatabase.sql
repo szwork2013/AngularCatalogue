@@ -245,7 +245,9 @@ VALUES ('Addidas'), ('American Apparel'), ('Andrew Christian'), ('ASOS'),
   ('Speedo'), ('Ted Baker'), ('United Colors of Benetton'), ('Vans')
   
 INSERT INTO ProductTypes(Caption)
-VALUES ('T-Shirt'), ('Jeans'), ('Polo-Shirt'), ('Jacket'), ('Shorts')
+VALUES ('T-Shirt'), ('Jeans'), ('Polo-Shirt'), ('Jacket'), ('Shorts'), 
+	('Shirt'), ('Socks'), ('Underwear'), ('Trousers'), ('Swimwear'), ('Belt & Braces'),
+	('Tie'), ('Accessory'), ('Coat'), ('Hat')
   
 INSERT INTO Styles(Caption)
 VALUES ('Long sleeve'), ('Regular sleeve'), ('Rolled Sleeve'), ('Capped Sleeve'),

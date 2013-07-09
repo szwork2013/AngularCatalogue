@@ -6,11 +6,18 @@ namespace AngularCatalogue.Web.Controllers.api
 {
     public class ProductTypesController : ApiController
     {
+        private const string InUseFilter = "inuse";
+        private const string AllFilter = "all";
         private Repository _repository = new Repository();
 
-        public IEnumerable<ProductType> Get()
+        public IEnumerable<ProductType> Get(string id)
         {
-            return _repository.GetProductTypes();
+            string filter = id.ToLowerInvariant();
+            if (filter == InUseFilter)
+                return _repository.GetProductTypes();
+            if (filter == AllFilter)
+                return _repository.GetAllProductTypes();
+            return null;
         }
     }
 }

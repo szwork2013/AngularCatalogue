@@ -106,6 +106,16 @@ namespace AngularCatalogue.Web.DataAccess
             }
         }
 
+        public IEnumerable<ProductType> GetAllProductTypes()
+        {
+            using (var conn = GetConnection())
+            {
+                return conn.Query<ProductType>("SELECT * FROM ProductTypes ORDER BY Caption");
+            }
+        }
+
+
+        
         public IEnumerable<Size> GetSizes()
         {
             using (var conn = GetConnection())

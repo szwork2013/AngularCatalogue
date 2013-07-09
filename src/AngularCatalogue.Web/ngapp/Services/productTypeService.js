@@ -18,7 +18,7 @@ angularCatalogueApp.factory("productTypeService", ["$http",
                 var value = this instanceof productType ? [this] : [new productType()];
                 $http({
                     method: "GET",
-                    url: "/api/ProductTypes"
+                    url: "/api/ProductTypes/IsUse"
                 }).then(function (response) {
                     var data = response.data;
                     if (data) {
