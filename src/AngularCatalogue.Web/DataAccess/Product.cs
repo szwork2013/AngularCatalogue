@@ -13,9 +13,12 @@ namespace AngularCatalogue.Web.DataAccess
 
         public int Id { get; set; }
         public string Brand { get; set; }
+        public int BrandId { get; set; }
         public string ProductName { get; set; }
         public string Style { get; set; }
+        public int StyleId { get; set; }
         public string ProductType { get; set; }
+        public int ProductTypeId { get; set; }
         public string ProductImage { get; set; }
         public IEnumerable<ProductVariant> Variants
         {

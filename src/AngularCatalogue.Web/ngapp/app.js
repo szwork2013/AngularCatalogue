@@ -7,6 +7,11 @@ var angularCatalogueApp = angular.module('angularCatalogue', ["ngResource", "ui"
                 templateUrl: "/ngapp/templates/product.html",
                 controller: "productDetailController"
             });
+        $routeProvider.when("/editProduct/:productId",
+            {
+                templateUrl: "/ngapp/templates/editProduct.html",
+                controller: "editProductController"
+            });
         $routeProvider.when("/",
             {
                 templateUrl:"/ngapp/templates/search.html",

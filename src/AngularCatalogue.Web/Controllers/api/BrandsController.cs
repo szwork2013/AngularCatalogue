@@ -8,13 +8,21 @@ using AngularCatalogue.Web.DataAccess;
 
 namespace AngularCatalogue.Web.Controllers.api
 {
+
     public class BrandsController : ApiController
     {
+        private const string InUseFilter = "inuse";
+        private const string AllFilter = "all";
         private Repository _repository = new Repository();
 
-        public IEnumerable<Brand> Get()
+        public IEnumerable<Brand> Get(string id)
         {
-            return _repository.GetBrands();
+            string filter = id.ToLowerInvariant();
+            if (filter == InUseFilter)
+                return _repository.GetBrands();
+            if (filter == AllFilter)
+                return _repository.GetAllBrands();
+            return null;
         }
     }
 }

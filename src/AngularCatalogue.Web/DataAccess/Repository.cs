@@ -90,6 +90,14 @@ namespace AngularCatalogue.Web.DataAccess
             }
         }
 
+        public IEnumerable<Brand> GetAllBrands()
+        {
+            using (var conn = GetConnection())
+            {
+                return conn.Query<Brand>("SELECT * FROM Brands ORDER BY Caption");
+            }
+        }
+
         public IEnumerable<ProductType> GetProductTypes()
         {
             using (var conn = GetConnection())

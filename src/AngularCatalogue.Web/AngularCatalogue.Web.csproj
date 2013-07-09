@@ -178,10 +178,12 @@
     <Content Include="Content\select2x2.png" />
     <Content Include="Content\spinner.gif" />
     <Content Include="Global.asax" />
+    <Content Include="ngapp\controllers\editProductController.js" />
     <Content Include="ngapp\controllers\productDetailController.js" />
     <Content Include="ngapp\directives\templates\user-filter-template.html" />
     <Content Include="ngapp\directives\userFilter.js" />
     <Content Include="ngapp\services\sizeService.js" />
+    <Content Include="ngapp\templates\editProduct.html" />
     <Content Include="ngapp\templates\product.html" />
     <Content Include="ngapp\templates\search.html" />
     <Content Include="Scripts\angular-bootstrap-prettify.js" />

@@ -166,7 +166,16 @@ ALTER TABLE [dbo].[ProductVariants] CHECK CONSTRAINT [FK_ProductVariants_Sizes]
 GO
 CREATE VIEW FlattenedProducts
 AS
-SELECT p.Id, b.Caption AS Brand, p.Caption AS ProductName, s.Caption AS Style, pt.Caption AS ProductType, p.ProductImage
+SELECT 
+	p.Id, 
+	b.Caption AS Brand, 
+	b.Id AS BrandId,
+	p.Caption AS ProductName, 
+	s.Caption AS Style,
+	s.Id AS StyleId,
+	pt.Caption AS ProductType, 
+	pt.Id AS ProductTypeId,
+	p.ProductImage
 FROM Products p
 INNER JOIN Brands b ON p.BrandId = b.Id
 INNER JOIN ProductTypes pt ON p.ProductTypeId = pt.Id

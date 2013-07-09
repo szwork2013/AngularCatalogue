@@ -34,7 +34,8 @@ namespace AngularCatalogue.Web
 
             // Controllers
                 .Include("~/ngapp/Controllers/productSearchController.js")
-                .Include("~/ngapp/Controllers/productDetailController.js"));
+                .Include("~/ngapp/Controllers/productDetailController.js")
+                .Include("~/ngapp/Controllers/editProductController.js"));
                 
          }
     }
