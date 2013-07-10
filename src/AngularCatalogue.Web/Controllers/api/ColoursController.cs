@@ -10,11 +10,18 @@ namespace AngularCatalogue.Web.Controllers.api
 {
     public class ColoursController : ApiController
     {
-        private Repository _repository = new Repository();
+      private const string InUseFilter = "inuse";
+      private const string AllFilter = "all";
+      private Repository _repository = new Repository();
 
-        public IEnumerable<Colour> Get()
+        public IEnumerable<Colour> Get(string id)
         {
+          string filter = id.ToLowerInvariant();
+          if (filter == InUseFilter)
             return _repository.GetColours();
+          if (filter == AllFilter)
+            return _repository.GetAllColours();
+          return null;
         }
     }
 }

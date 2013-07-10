@@ -1,56 +1,70 @@
 ﻿<div class="row-fluid">
-    <form class="navbar-form pull-left">
+  <form class="navbar-form pull-left">
 
-        <div class="well">
-        <span class="label">Product Name</span> <input type="text" value="{{product.ProductName}}" />
-        </div>
-        <div class="well">
-        <span class="label">Brand</span> 
-            <select ng-options="brand as brand.Caption for brand in brands" ng-model="selectedBrand" ng-change="changeBrand()"></select>
-            </select> 
+    <div class="well">
+      <span class="label">Product Name</span>
+      <input type="text" value="{{product.ProductName}}" ng-model="product.ProductName" /> {{product.ProductName}}
+    </div>
+    <div class="well">
+      <span class="label">Brand</span>
+      <select ng-options="brand as brand.Caption for brand in brands" ng-model="selectedBrand" ng-change="changeBrand()"></select>
+      </select> 
             {{product.BrandId}} / {{product.Brand}}
-        </div>
-        <div class="well">
-            <span class="label">Product Type</span>
-            <select ng-options="productType as productType.Caption for productType in productTypes" ng-model="selectedProductType" ng-change="changeProductType()"></select>
-            {{product.ProductTypeId}} / {{product.ProductType}}
-        </div>
-
-        <div class="well">
-            <span class="label">Style</span>
-            <select ng-options="style as style.Caption for style in styles" ng-model="selectedStyle" ng-change="changeStyle()"></select>
-            {{product.StyleId}} / {{product.Style}}
-        </div>
-
-    </form>
-
-
-    <div style="clear:both;"></div>
-    <h3>Debug view</h3>
-    <pre>selectedBrand = {{selectedBrand | json}}</pre>
-    <pre>product={{product | json}}</pre>
-
-    <div class="productDetailMain">
-        <h2>{{product.ProductName}}</h2>
-        <p><strong>{{product.Brand}} {{product.ProductType}}</strong> ({{product.Style}})</p>
-        <p><img style="width:200px" ng-src="/Content/clothing-images/{{product.ProductImage}}" alt="{{product.Brand}} {{product.ProductName}} ({{product.Style}} {{product.ProductType}})" />
-        </p>
     </div>
-    <div class="productDetailAvailability">
-        <h3>Available Colours</h3>
-        <ul>
-            <li class="productDetailAvailabilityItem" ng-repeat="variant in product.Variants | unique:'Colour'">{{variant.Colour}}</li>
-        </ul>
-        <div style="clear:both"></div>
-        <h3>Available Sizes</h3>
-        <ul>
-            <li class="productDetailAvailabilityItem" ng-repeat="variant in product.Variants | unique:'Size'">{{variant.Size}}</li>
-        </ul>
+    <div class="well">
+      <span class="label">Product Type</span>
+      <select ng-options="productType as productType.Caption for productType in productTypes" ng-model="selectedProductType" ng-change="changeProductType()"></select>
+      {{product.ProductTypeId}} / {{product.ProductType}}
     </div>
-    <div style="clear:both;"></div>
-    <div>
-        <a href="/#/product/{{product.Id}}" class="btn btn-large">Cancel</a>
-        <a href="/#/editProduct/{{product.Id}}" class="btn btn-primary btn-large">Save</a>
 
+    <div class="well">
+      <span class="label">Style</span>
+      <select ng-options="style as style.Caption for style in styles" ng-model="selectedStyle" ng-change="changeStyle()"></select>
+      {{product.StyleId}} / {{product.Style}}
     </div>
+
+    <div class="well"><span class="label">Variants</span>
+      <div ng-repeat="variant in product.Variants" class="well">
+        <span class="label">Size</span>
+        <select ng-options="size as size.Caption for size in sizes" ng-model="variant.selectedSize" ng-change="changeSize(variant)"></select>
+        <span class="label">Colour</span>
+        <select ng-options="colour as colour.Caption for colour in colours" ng-model="variant.selectedColour" ng-change="changeColour(variant)"></select>
+        <input type="button" class="btn btn-small" ng-click="removeVariant(variant)" value="Remove this Variant" />
+      </div>
+      <input type="button" class="btn btn-small" ng-click="addNewVariant()" value="Add new Variant" />
+    </div>
+
+  </form>
+
+
+  <div style="clear: both;"></div>
+  <div class="productDetailMain">
+    <h2>{{product.ProductName}}</h2>
+    <p><strong>{{product.Brand}} {{product.ProductType}}</strong> ({{product.Style}})</p>
+    <p>
+      <img style="width: 200px" ng-src="/Content/clothing-images/{{product.ProductImage}}" alt="{{product.Brand}} {{product.ProductName}} ({{product.Style}} {{product.ProductType}})" />
+    </p>
+  </div>
+  <div class="productDetailAvailability">
+    <h3>Available Colours</h3>
+    <ul>
+      <li class="productDetailAvailabilityItem" ng-repeat="variant in product.Variants | unique:'Colour'">{{variant.Colour}}</li>
+    </ul>
+    <div style="clear: both"></div>
+    <h3>Available Sizes</h3>
+    <ul>
+      <li class="productDetailAvailabilityItem" ng-repeat="variant in product.Variants | unique:'Size'">{{variant.Size}}</li>
+    </ul>
+  </div>
+  <div style="clear: both;"></div>
+  <div>
+    <a href="/#/product/{{product.Id}}" class="btn btn-large">Cancel</a>
+    <input id="save-button" type="button" class="btn btn-primary btn-large" ng-click="saveProduct()" value="Save" />
+    <img id="save-in-progress-spinner" src="/Content/spinner.gif" class="not-waiting" />
+    <p id="save-message"></p>
+  </div>
+
+  <h3>Debug view</h3>
+  <pre>product={{product | json}}</pre>
+
 </div>

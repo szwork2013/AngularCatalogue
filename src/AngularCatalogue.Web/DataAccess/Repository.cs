@@ -82,6 +82,14 @@ namespace AngularCatalogue.Web.DataAccess
             }
         }
 
+        public IEnumerable<Colour> GetAllColours()
+        {
+          using (var conn = GetConnection())
+          {
+            return conn.Query<Colour>("SELECT * FROM Colours ORDER BY Caption");
+          }
+        }
+
         public IEnumerable<Brand> GetBrands()
         {
             using (var conn = GetConnection())
@@ -126,9 +134,32 @@ namespace AngularCatalogue.Web.DataAccess
         {
             using (var conn = GetConnection())
             {
-                return conn.Query<Size>("SELECT * FROM SizeUsage");
+                return conn.Query<Size>("SELECT * FROM SizeUsage ORDER BY Caption");
             }            
         }
+
+      public IEnumerable<Size> GetAllSizes()
+        {
+          using (var conn = GetConnection())
+          {
+            return conn.Query<Size>("SELECT * FROM Sizes ORDER BY Caption");
+          }
+        }
+
+      public Product Save(Product product)
+      {
+        using (var conn = GetConnection())
+        {
+          var transaction = conn.BeginTransaction();
+
+          conn.Execute("UPDATE Products SET Caption = @caption, BrandId = @brandId, ProductTypeId = @productTypeId, StyleId = @styleId WHERE Id = @id",
+            new { caption = product.ProductName, brandId = product.BrandId, productTypeId = product.ProductTypeId, styleId = product.StyleId, id = product.Id}, 
+            transaction);
+          
+          transaction.Commit();
+        }
+        return GetProduct(product.Id);
+      }
 
     }
 }

@@ -1,24 +1,29 @@
 ﻿@{
-    ViewBag.Title = "Index";
+  ViewBag.Title = "Index";
 }
 <div class="container-fluid">
-    <div class="row-fluid">
-        <div class="hero-unit">
-            <h1>Angular Catalogue</h1>
-            <p>
-            This is a demonstration of using Angular JS in a web application. You can filter 
+  <div class="row-fluid">
+    <div class="hero-unit">
+      <h1>Angular Catalogue</h1>
+      <p>
+        This is a demonstration of using Angular JS in a web application. You can filter 
             products using the filters on the left. You can select individual products to get more information about it.
-            </p>
-            <p>
-                <a href="/#/" class="btn btn-large">Home</a>
-            </p>
-        </div>
-        </div>
-    <div ng-view></div>
-    <!--/row-->
-    <hr>
-    <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
+      </p>
+      <p>
+        <a href="/#/" class="btn btn-large">Home</a>
+      </p>
+    </div>
+  </div>
+  <div class="label label-important noscript-message">
+    <noscript>
+      You need to have javascript to run this site.
+    </noscript>
+  </div>
+  <div ng-view></div>
+  <!--/row-->
+  <hr>
+  <footer>
+    <p>&copy; Company 2013</p>
+  </footer>
 </div>
 <!--/.fluid-container-->

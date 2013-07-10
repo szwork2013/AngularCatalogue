@@ -18,7 +18,7 @@ angularCatalogueApp.factory("colourService", ["$http",
                 var value = this instanceof colour ? [this] : [new colour()];
                 $http({
                     method: "GET",
-                    url: "/api/Colours"
+                    url: "/api/Colours/InUse"
                 }).then(function (response) {
                     var data = response.data;
                     if (data) {

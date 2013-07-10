@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,12 +12,6 @@ namespace AngularCatalogue.Web.Controllers.api
     public class ProductController : ApiController
     {
         private Repository _repository = new Repository();
-
-        //public Product Get(string id)
-        //{
-        //    int productId = int.Parse(id);
-        //    return _repository.GetProduct(productId);
-        //}
 
         public IEnumerable<Product> Get(string colours, string brands, string productTypes, string sizes)
         {
@@ -38,6 +33,16 @@ namespace AngularCatalogue.Web.Controllers.api
         public Product Get(int id)
         {
             return _repository.GetProduct(id);
+        }
+
+        public Product Post(int id, Product product)
+        {
+          Trace.WriteLine(id);
+          Trace.WriteLine(product);
+
+          _repository.Save(product);
+
+          return product;
         }
     }
 }

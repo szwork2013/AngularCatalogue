@@ -16,6 +16,9 @@
       </script>
     <![endif]-->
     <title>Angular Catalogue</title>
+    <script type="text/javascript">
+      document.getElementsByTagName("html")[0].className = "xjs";
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @Styles.Render("~/Content/base-styles.css")
     @RenderSection("css", required: false)
@@ -25,5 +28,6 @@
     @Scripts.Render("~/Scripts/base-frameworks.js")
     @Scripts.Render("~/Scripts/angular-catalogue.js")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

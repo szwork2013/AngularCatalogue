@@ -1,6 +1,11 @@
 ﻿body {
 }
 
+.xjs .noscript-message
+{
+  display:none;
+}
+
 label {
     display: inline-block;
 }
@@ -23,4 +28,14 @@ label {
     float: left;
     display: inline-block;
     padding: 5px;
+}
+
+.not-waiting
+{
+  display:none;
+}
+
+.waiting
+{
+  display: inline-block;
 }

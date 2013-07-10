@@ -18,7 +18,7 @@ angularCatalogueApp.factory("sizeService", ["$http",
                 var value = this instanceof size ? [this] : [new size()];
                 $http({
                     method: "GET",
-                    url: "/api/Sizes"
+                    url: "/api/Sizes/InUse"
                 }).then(function (response) {
                     var data = response.data;
                     if (data) {

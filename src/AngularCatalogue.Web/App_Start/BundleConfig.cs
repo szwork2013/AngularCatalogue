@@ -24,6 +24,7 @@ namespace AngularCatalogue.Web
 
              // Filters
                 .Include("~/ngapp/filters/idFilter.js")
+                .Include("~/ngapp/filters/allBut.js")
 
              // The services
                 .Include("~/ngapp/Services/colourService.js")
@@ -39,7 +40,6 @@ namespace AngularCatalogue.Web
                 .Include("~/ngapp/Controllers/productSearchController.js")
                 .Include("~/ngapp/Controllers/productDetailController.js")
                 .Include("~/ngapp/Controllers/editProductController.js"));
-                
          }
     }
 }
