@@ -35,6 +35,7 @@ namespace AngularCatalogue.Web
 
             // Directives
                 .Include("~/ngapp/Directives/userFilter.js")
+                .Include("~/ngapp/Directives/productDetailsDirective.js")
 
             // Controllers
                 .Include("~/ngapp/Controllers/productSearchController.js")

@@ -182,6 +182,8 @@
     <Content Include="Global.asax" />
     <Content Include="ngapp\controllers\editProductController.js" />
     <Content Include="ngapp\controllers\productDetailController.js" />
+    <Content Include="ngapp\directives\templates\product-details-template.html" />
+    <Content Include="ngapp\directives\productDetailsDirective.js" />
     <Content Include="ngapp\directives\templates\user-filter-template.html" />
     <Content Include="ngapp\directives\userFilter.js" />
     <Content Include="ngapp\filters\allBut.js" />

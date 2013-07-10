@@ -1,21 +1,4 @@
 ﻿<div class="row-fluid">
-    <div class="productDetailMain">
-        <h2>{{product.ProductName}}</h2>
-        <p><strong>{{product.Brand}} {{product.ProductType}}</strong> ({{product.Style}})</p>
-        <p><img style="width:200px" ng-src="/Content/clothing-images/{{product.ProductImage}}" alt="{{product.Brand}} {{product.ProductName}} ({{product.Style}} {{product.ProductType}})" />
-        </p>
-    </div>
-    <div class="productDetailAvailability">
-        <h3>Available Colours</h3>
-        <ul>
-            <li class="productDetailAvailabilityItem" ng-repeat="variant in product.Variants | unique:'Colour'">{{variant.Colour}}</li>
-        </ul>
-        <div style="clear:both"></div>
-        <h3>Available Sizes</h3>
-        <ul>
-            <li class="productDetailAvailabilityItem" ng-repeat="variant in product.Variants | unique:'Size'">{{variant.Size}}</li>
-        </ul>
-    </div>
-    <div style="clear:both;"></div>
-    <div><a href="/#/editProduct/{{product.Id}}" class="btn btn-primary btn-large">Edit Product</a></div>
+  <div product-details product="product"></div>
+  <a href="/#/editProduct/{{product.Id}}" class="btn btn-primary btn-large">Edit Product</a></div>
 </div>
