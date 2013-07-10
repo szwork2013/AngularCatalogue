@@ -3,24 +3,21 @@
 
     <div class="well">
       <span class="label">Product Name</span>
-      <input type="text" value="{{product.ProductName}}" ng-model="product.ProductName" /> {{product.ProductName}}
+      <input type="text" value="{{product.ProductName}}" ng-model="product.ProductName" />
     </div>
     <div class="well">
       <span class="label">Brand</span>
       <select ng-options="brand as brand.Caption for brand in brands" ng-model="selectedBrand" ng-change="changeBrand()"></select>
       </select> 
-            {{product.BrandId}} / {{product.Brand}}
     </div>
     <div class="well">
       <span class="label">Product Type</span>
       <select ng-options="productType as productType.Caption for productType in productTypes" ng-model="selectedProductType" ng-change="changeProductType()"></select>
-      {{product.ProductTypeId}} / {{product.ProductType}}
     </div>
 
     <div class="well">
       <span class="label">Style</span>
       <select ng-options="style as style.Caption for style in styles" ng-model="selectedStyle" ng-change="changeStyle()"></select>
-      {{product.StyleId}} / {{product.Style}}
     </div>
 
     <div class="well"><span class="label">Variants</span>
@@ -63,8 +60,4 @@
     <img id="save-in-progress-spinner" src="/Content/spinner.gif" class="not-waiting" />
     <p id="save-message"></p>
   </div>
-
-  <h3>Debug view</h3>
-  <pre>product={{product | json}}</pre>
-
 </div>
