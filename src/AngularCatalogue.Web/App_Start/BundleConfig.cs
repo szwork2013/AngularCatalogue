@@ -18,6 +18,9 @@ namespace AngularCatalogue.Web
                  .Include("~/Scripts/angular-ui.js")
                  .Include("~/Scripts/bootstrap.js"));
 
+             bundles.Add(new ScriptBundle("~/Scripts/FixIE.js")
+               .Include("~/Scripts/angular-ui-ieshiv.js"));
+
              bundles.Add(new ScriptBundle("~/Scripts/angular-catalogue.js")
              // Configure the Angular Application
                 .Include("~/ngapp/app.js")
