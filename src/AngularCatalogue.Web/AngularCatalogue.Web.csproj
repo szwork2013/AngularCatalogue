@@ -169,6 +169,10 @@
     <Content Include="Content\clothing-images\polo-shirt-14.png" />
     <Content Include="Content\clothing-images\polo-shirt-8.png" />
     <Content Include="Content\clothing-images\polo-shirt-9.png" />
+    <Content Include="Content\clothing-images\shorts-17.png" />
+    <Content Include="Content\clothing-images\shorts-18.png" />
+    <Content Include="Content\clothing-images\shorts-19.png" />
+    <Content Include="Content\clothing-images\shorts-20.png" />
     <Content Include="Content\clothing-images\tshirt-1.png" />
     <Content Include="Content\clothing-images\tshirt-2.png" />
     <Content Include="Content\clothing-images\tshirt-3.png" />
@@ -537,6 +541,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\AngularCatalogue.pubxml" />
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
