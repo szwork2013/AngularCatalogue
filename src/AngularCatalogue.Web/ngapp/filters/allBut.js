@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angularCatalogueApp.filter("allBut", function () {
+angular.module('angularCatalogue').filter("allBut", function () {
   return function (input, butThis) {
     var result = [];
     angular.forEach(input, function (value, key) {

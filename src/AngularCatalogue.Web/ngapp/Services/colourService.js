@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angularCatalogueApp.factory("colourService", ["$http",
+angular.module('angularCatalogue').factory("colourService", ["$http",
     function ($http) {
         function colourServiceFactory() {
             function parseResponse(data) {

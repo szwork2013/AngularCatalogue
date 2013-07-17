@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angularCatalogueApp.factory("productService", ["$resource", 
+angular.module('angularCatalogue').factory("productService", ["$resource",
     function ($resource) {
         var resource = $resource("/api/Product/:productId", 
             {},

@@ -1,5 +1,5 @@
 "use strict";
-angularCatalogueApp.controller("productSearchController",
+angular.module('angularCatalogue').controller("productSearchController",
     ['$scope', '$filter', 'colourService', 'productService', 'brandService', 'productTypeService', 'sizeService',
         function ($scope, $filter, colourService, productService, brandService, productTypeService, sizeService) {
             $scope.colours = colourService().$query();

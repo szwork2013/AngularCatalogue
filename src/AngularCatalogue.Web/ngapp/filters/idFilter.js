@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angularCatalogueApp.filter("id", function() {
+angular.module('angularCatalogue').filter("id", function () {
   return function(input, id) {
     var result = null;
     angular.forEach(input, function(value, key) {

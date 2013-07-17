@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angularCatalogueApp.controller("editProductController",
+angular.module('angularCatalogue').controller("editProductController",
     ['$scope', '$routeParams', '$filter', '$http',
         function ($scope, $routeParams, $filter, $http) {
           var originalProduct;

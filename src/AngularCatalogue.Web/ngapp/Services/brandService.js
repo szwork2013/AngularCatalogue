@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angularCatalogueApp.factory("brandService", ["$http",
+angular.module('angularCatalogue').factory("brandService", ["$http",
     function ($http) {
         function brandServiceFactory() {
             function parseResponse(data) {

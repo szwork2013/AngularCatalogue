@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angularCatalogueApp.factory("sizeService", ["$http",
+angular.module('angularCatalogue').factory("sizeService", ["$http",
     function ($http) {
         function sizeServiceFactory() {
             function parseResponse(data) {

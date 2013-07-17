@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angularCatalogueApp.factory("productTypeService", ["$http",
+angular.module('angularCatalogue').factory("productTypeService", ["$http",
     function ($http) {
         function productTypeServiceFactory() {
             function parseResponse(data) {
