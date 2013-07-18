@@ -1,7 +1,7 @@
 ﻿"use strict";
 
-angular.module('angularCatalogue').controller("editProductController",
-    ['$scope', '$routeParams', '$filter', '$http',
+angular.module("angularCatalogue").controller("editProductController",
+    ["$scope", "$routeParams", "$filter", "$http",
         function ($scope, $routeParams, $filter, $http) {
           var originalProduct;
           $http.get("/api/Product/" + $routeParams.productId).success(function (data) {
@@ -52,7 +52,7 @@ angular.module('angularCatalogue').controller("editProductController",
             if (isReadyToInitDropDowns())
               return;
 
-            $scope.selectedBrand = $filter('id')($scope.brands, originalProduct.BrandId);
+            $scope.selectedBrand = $filter("id")($scope.brands, originalProduct.BrandId);
             $scope.selectedProductType = $filter("id")($scope.productTypes, originalProduct.ProductTypeId);
             $scope.selectedStyle = $filter("id")($scope.styles, originalProduct.StyleId);
             angular.forEach($scope.product.Variants, function (variant) {
@@ -91,7 +91,7 @@ angular.module('angularCatalogue').controller("editProductController",
           };
 
           $scope.removeVariant = function (variant) {
-            $scope.product.Variants = $filter('allBut')($scope.product.Variants, variant);
+            $scope.product.Variants = $filter("allBut")($scope.product.Variants, variant);
           };
 
           $scope.addNewVariant = function () {

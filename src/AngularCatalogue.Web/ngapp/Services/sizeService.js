@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angular.module('angularCatalogue').factory("sizeService", ["$http",
+angular.module("angularCatalogue").factory("sizeService", ["$http",
     function ($http) {
         function sizeServiceFactory() {
             function parseResponse(data) {
@@ -37,11 +37,3 @@ angular.module('angularCatalogue').factory("sizeService", ["$http",
 
         return sizeServiceFactory;
     }]);
-
-
-//"use strict";
-
-//angularCatalogueApp.factory("sizeService", ["$resource",
-//    function ($resource) {
-//        return $resource("/api/Sizes", {}, { query: { method: "GET", params: {}, isArray: true} });
-//    } ]);

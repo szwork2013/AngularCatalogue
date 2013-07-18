@@ -1,10 +1,10 @@
 ﻿"use strict";
 
-angular.module('angularCatalogue').factory("brandService", ["$http",
+angular.module("angularCatalogue").factory("brandService", ["$http",
     function ($http) {
         function brandServiceFactory() {
             function parseResponse(data) {
-                angular.forEach(data, function (value, key) {
+                angular.forEach(data, function (value) {
                     value.isChecked = false;
                 });
                 return data;

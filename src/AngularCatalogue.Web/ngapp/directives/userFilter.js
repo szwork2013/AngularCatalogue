@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-angular.module('angularCatalogue').directive("userFilter", ["$compile", function ($compile) {
+angular.module("angularCatalogue").directive("userFilter", [function () {
     return {
         restrict: "A",
         templateUrl: "/ngapp/directives/templates/user-filter-template.html",
